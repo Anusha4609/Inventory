@@ -1,0 +1,49 @@
+{% extends "Inventory/base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-2">
+            <h3>Add Book</h3>
+        </div>
+        <div class="col-2 text-end">
+            <a class="btn btn-danger" href="{% url 'list' %}">Back to books</a>
+        </div>
+    </div>
+
+
+    <form class="row g-3" method="post">
+        {% csrf_token %}
+        <div class="col-md-10">
+            <label for="q" class="form-label">Book Search</label>
+            <input class="form-control" placeholder="Enter a book name" id="q" type="text" class="validate" name="q" value="{{ singleBook.name }}" required readonly>
+        </div>
+        <div class="col-md-1 offset-md-1">
+            <button class="btn btn-info" style="margin-top: 2rem!important;" type="submit" name="buttonval"
+                value="search" disabled> Search</button>
+        </div>
+    </form>
+    <br>
+    <form class="row g-3" method="post">
+        {% csrf_token %}
+        <div class="col-12">
+            <label for="dropdown" class="form-label">Book</label>
+            <select class="form-select" aria-label="Default select example" name="dropdown" id="dropdown" required disabled>
+<!--                {% for i in books %}-->
+                <!--ask here -->
+                <option value="{{i.id}}">{{singleBook.name}}</option>
+<!--                {% endfor %}-->
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="qty" class="form-label">Quantity</label>
+            <input class="form-control" placeholder="Enter Quantity" min="0" type="number" class="validate" name="qty"
+                id="qty" value="{{ singleBook.quantity }}" required>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success" name="buttonval" value="add">Save</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
