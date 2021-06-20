@@ -1,7 +1,7 @@
 # Inventory
 
 1) Database Creation:
-    a. Created Books model
+    a) Created Books model
     
 2) Created services.py where the the google books API is integrated and the books from the api are fetched.
 
